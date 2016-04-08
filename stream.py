@@ -96,7 +96,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 1:
         print parser.parse_args(['-h'])
     args = parser.parse_args()
-    api, auth = get_config()
+    api, auth = get_config_keys()
 
     twitter_stream = Stream(auth, Listener(args.data_dir, args.query))
     twitter_stream.filter(track=[args.query])
