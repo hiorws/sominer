@@ -17,8 +17,11 @@ cd sominer
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
+cp config.py.sample config.py
 mkdir data
 ```
+and edit the `config.py` add your tokens
+
 ----
 #### Sample Usage
 
