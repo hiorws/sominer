@@ -35,7 +35,7 @@ to prints tweets in json format
 
 ```
 python tweet_printer.py
-Enter .json file name to read and print:stream_euthanasia.json
+Enter .json file name to read and print:stream_euthanasia
 ```
 
 
