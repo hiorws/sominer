@@ -1,4 +1,5 @@
 *.pyc
 venv/
+data/
 config.py
 .idea/
