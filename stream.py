@@ -15,7 +15,7 @@ import time
 import argparse
 import string
 import json
-from get_config import get_config
+from get_config import get_config_keys
 import sys
 
 

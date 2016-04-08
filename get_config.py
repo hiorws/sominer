@@ -14,7 +14,7 @@ def get_tokens_from_config():
     return consumer_key, consumer_secret, access_token, access_secret
 
 
-def get_config():
+def get_config_keys():
     consumer_key, consumer_secret, access_token, access_secret = get_tokens_from_config()
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_secret)
