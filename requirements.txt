@@ -1,5 +1,7 @@
+config==0.3.9
 oauthlib==1.0.3
 requests==2.9.1
 requests-oauthlib==0.6.1
 six==1.10.0
 tweepy==3.3.0
+wheel==0.24.0
