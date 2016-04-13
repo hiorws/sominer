@@ -19,6 +19,10 @@ from get_config import get_config_keys
 import sys
 
 
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
+
 def get_parser():
     """Get parser for command line arguments."""
 
@@ -44,9 +48,10 @@ class Listener(StreamListener):
 
     def on_data(self, data):
         try:
-            with open(self.outfile, 'a') as f:
-                f.write(data.encode('utf-8'))
-                print(data.encode('utf-8'))
+            with open(self.outfile, 'a', encoding="") as f:
+                data = data.encode("utf-8")
+                f.write(data)
+                print(data)
                 return True
         except BaseException as e:
             print("Error on_data: %s" % str(e))
@@ -54,7 +59,7 @@ class Listener(StreamListener):
         return True
 
     def on_error(self, status):
-        print(status.encode('utf-8'))
+        print(status)
         return True
 
 
