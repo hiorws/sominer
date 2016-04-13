@@ -5,6 +5,7 @@ from tweet_reader import read_multiple_tweets_from_file
 from sys import argv
 from json import dumps, dump
 import argparse
+from datetime import datetime
 
 
 DAY = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0,
@@ -29,30 +30,35 @@ def get_parser():
     return parser
 
 
-def extract_time(timestamp):
-    time = timestamp.split()[3]
-    return time
+def time_from_time_stamp(timestamp):
+    timestamp = int(timestamp) / 1000
+    datetime_object = datetime.fromtimestamp(timestamp)
+    return datetime_object
 
 
-def check_time_interval(time):
-    hour, minute, second = time.split(":")
-    DAY[int(hour)] += 1
+def extract_hour(timestamp):
+    hour_interval = time_from_time_stamp(timestamp=timestamp).hour
+    return hour_interval
+
+
+def check_hour_interval(hour):
+    DAY[int(hour % 24)] += 1
 
 
 def generate_json(output_to_save):
-    f = open(output_to_save,"w")
-    f.write(dumps(DAY))
-    f.close()
+    with open(output_to_save, 'w') as fp:
+        dump(DAY, fp, indent=4, sort_keys=False)
 
 
 def main():
     tweets = read_multiple_tweets_from_file(args.input)
     count = 0
     for i in tweets:
-        timestamp = i['created_at']
-        time = extract_time(timestamp=timestamp)
-        check_time_interval(time=time)
-    print count
+        timestamp = i['timestamp_ms']
+        hour = extract_hour(timestamp=timestamp)
+        check_hour_interval(hour=hour)
+        count += 1
+    print(str(count) + " tweets counted.")
     generate_json(output_to_save=args.output)
     print("JSON file created successfully.")
 
