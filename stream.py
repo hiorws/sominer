@@ -17,10 +17,8 @@ import string
 import json
 from get_config import get_config_keys
 import sys
-
-
-reload(sys)
-sys.setdefaultencoding("utf-8")
+from pprint import pprint
+from json import dumps
 
 
 def get_parser():
@@ -48,10 +46,19 @@ class Listener(StreamListener):
 
     def on_data(self, data):
         try:
-            with open(self.outfile, 'a', encoding="") as f:
-                data = data.encode("utf-8")
-                f.write(data)
-                print(data)
+            elected_dict = {}
+            with open(self.outfile, 'a', encoding="utf-8") as f:
+                # print(type(data))
+                decoded = json.loads(data)
+                # print(decoded['text'].encode('ascii', 'ignore'))
+                # f.write(data)
+                # pprint(data.encode('ascii', 'ignore'))
+                elected_dict['text'] = decoded['text'].encode('ascii', 'ignore')
+                elected_dict['timestamp_ms'] = decoded['timestamp_ms']
+                last_writable = str(elected_dict['text']) + str(elected_dict['timestamp_ms'] + "\n")
+                json_writable = dumps(elected_dict)
+                f.write(json_writable)
+                pprint(json_writable)
                 return True
         except BaseException as e:
             print("Error on_data: %s" % str(e))
@@ -99,7 +106,7 @@ def parse(cls, api, raw):
 if __name__ == '__main__':
     parser = get_parser()
     if len(sys.argv) == 1:
-        print parser.parse_args(['-h'])
+        print(parser.parse_args(['-h']))
     args = parser.parse_args()
     api, auth = get_config_keys()
 
