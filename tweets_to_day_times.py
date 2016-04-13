@@ -16,7 +16,7 @@ def get_parser():
     Get parser for command line arguments.
     """
 
-    parser = argparse.ArgumentParser(description="tweets-to-dayjson")
+    parser = argparse.ArgumentParser(description="tweets-to-day-times")
     parser.add_argument("-i",
                         "--input",
                         dest="input",
