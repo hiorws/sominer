@@ -3,3 +3,4 @@ venv/
 data/
 config.py
 .idea/
+.DS_Store
