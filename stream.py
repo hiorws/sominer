@@ -45,8 +45,8 @@ class Listener(StreamListener):
     def on_data(self, data):
         try:
             with open(self.outfile, 'a') as f:
-                f.write(data)
-                print(data)
+                f.write(data.encode('utf-8'))
+                print(data.encode('utf-8'))
                 return True
         except BaseException as e:
             print("Error on_data: %s" % str(e))
@@ -54,7 +54,7 @@ class Listener(StreamListener):
         return True
 
     def on_error(self, status):
-        print(status)
+        print(status.encode('utf-8'))
         return True
 
 
