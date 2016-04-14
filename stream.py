@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # To run this code, first edit config.py with your configuration, then:
 #
 # mkdir data
-# python twitter_stream_download.py -q apple -d data
+# python3 stream.py -q apple -d data
 #
 # It will produce the list of tweets for the query "apple"
 # in the file data/stream_apple.json
