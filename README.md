@@ -19,7 +19,7 @@ sominer is a toolchain which helps to analyze and visualize tweets in real-time
 ```
 git clone https://github.com/hiorws/sominer.git
 cd sominer
-virtualenv venv
+virtualenv -p python3 venv
 source venv/bin/activate
 pip install -r requirements.txt
 cp config.py.sample config.py
@@ -33,20 +33,20 @@ and edit the `config.py` add your tokens
 to get public tweets includes about euthanasia
 
 ```
-python stream.py -q euthanasia -d data/
+python3 stream.py -q euthanasia -d data/
 ```
 
 to prints tweets in json format
 
 ```
-python tweet_reader.py stream_euthanasia.json
+python3 tweet_reader.py stream_euthanasia.json
 
 ```
 
 to split day times a tweet list
 
 ```
-python tweets_to_day_times.py -i stream_euthanasia.json -o euthanasia_splitted.json
+python3 tweets_to_day_times.py -i stream_euthanasia.json -o euthanasia_splitted.json
 ```
 
 #### Help Screens
