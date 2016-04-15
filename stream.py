@@ -53,12 +53,12 @@ class Listener(StreamListener):
                 # print(decoded['text'].encode('ascii', 'ignore'))
                 # f.write(data)
                 # pprint(data.encode('ascii', 'ignore'))
-                elected_dict['text'] = decoded['text'].encode('ascii', 'ignore')
-                elected_dict['timestamp_ms'] = decoded['timestamp_ms']
-                last_writable = str(elected_dict['text']) + str(elected_dict['timestamp_ms'] + "\n")
-                json_writable = dumps(elected_dict)
-                f.write(json_writable)
-                pprint(json_writable)
+                # elected_dict['text'] = decoded['text'].encode('ascii', 'ignore')
+                # elected_dict['timestamp_ms'] = decoded['timestamp_ms']
+                # print()
+                json_writable = dumps(data)
+                f.write(json_writable+"\n")
+                #pprint(json_writable)
                 return True
         except BaseException as e:
             print("Error on_data: %s" % str(e))
