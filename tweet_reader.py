@@ -16,6 +16,7 @@ def read_multiple_tweets_from_file(file_path_to_read):
     with open(file_path_to_read, 'r') as f:
         for line in f:
             if '{"limit":{"track":' not in line:
+                print()
                 tweet_list.append(loads(line))
     return tweet_list
 

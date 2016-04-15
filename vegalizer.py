@@ -13,8 +13,7 @@ class Vegaizer:
         self.vega_json = loads(open(vega_address).read())
 
     def data_to_vega(self, data_name):
-        data_json_raw = read_json(data_name)
-        data_json_dict = data_json_raw[0]
+        data_json_dict = read_json(data_name)
         for key in data_json_dict.keys():
             self.vega_json["data"][0]["values"].append({"category": key, "amount": data_json_dict[key]})
 
