@@ -49,6 +49,20 @@ to split day times a tweet list
 python3 tweets_to_day_times.py -i stream_euthanasia.json -o euthanasia_splitted.json
 ```
 
+to create a JSON using data to use it with Vega
+
+```
+python3 vegalizer.py -t bar -d data/euthanasia_splitted.json -o data/bar_euthanasia.json
+
+```
+
+to use bar_euthanasia.json with Vega
+
+```
+vg2svg data/bar_euthanasia.json data/bar_euthanasia.svg
+
+```
+
 #### Help Screens
 ```
 usage: stream.py [-h] [-q QUERY] [-d DATA_DIR]
