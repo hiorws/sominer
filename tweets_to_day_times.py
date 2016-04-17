@@ -3,7 +3,7 @@
 
 from tweet_reader import read_multiple_tweets_from_file
 from sys import argv
-from json import dumps, dump,loads
+from json import dumps, dump
 import argparse
 from datetime import datetime
 
@@ -54,7 +54,7 @@ def main():
     tweets = read_multiple_tweets_from_file(args.input)
     count = 0
     for i in tweets:
-        tweet = loads(i)
+        tweet = i
         timestamp = tweet['timestamp_ms']
         hour = extract_hour(timestamp=timestamp)
         check_hour_interval(hour=hour)
@@ -70,4 +70,3 @@ if __name__ == "__main__":
         print(parser.parse_args(['-h']))
     args = parser.parse_args()
     main()
-
