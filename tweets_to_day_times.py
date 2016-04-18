@@ -3,9 +3,10 @@
 
 from tweet_reader import read_multiple_tweets_from_file
 from sys import argv
-from json import dumps, dump
+from json import dump, loads
 import argparse
 from datetime import datetime
+from tqdm import tqdm
 
 
 DAY = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0,
@@ -53,8 +54,8 @@ def generate_json(output_to_save):
 def main():
     tweets = read_multiple_tweets_from_file(args.input)
     count = 0
-    for i in tweets:
-        tweet = i
+    for tweet in tqdm(tweets):
+        tweet = loads(tweet)
         timestamp = tweet['timestamp_ms']
         hour = extract_hour(timestamp=timestamp)
         check_hour_interval(hour=hour)
