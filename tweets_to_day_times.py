@@ -3,7 +3,7 @@
 
 from tweet_reader import read_multiple_tweets_from_file
 from sys import argv
-from json import dump, loads
+from json import dump
 import argparse
 from datetime import datetime
 from tqdm import tqdm

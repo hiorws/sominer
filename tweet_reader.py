@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from json import dumps, loads, load
+from json import loads, load
 from sys import argv, exit
 
 
