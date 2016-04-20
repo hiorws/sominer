@@ -55,7 +55,6 @@ def main():
     tweets = read_multiple_tweets_from_file(args.input)
     count = 0
     for tweet in tqdm(tweets):
-        tweet = loads(tweet)
         timestamp = tweet['timestamp_ms']
         hour = extract_hour(timestamp=timestamp)
         check_hour_interval(hour=hour)
